@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Creation</title>
+</head>
+<body>
+    {% if form %}
+        {%if form.vacancy %}
+        <h2>Vacancy</h2>
+            <form method="post" action="vacancy/new">
+            {% csrf_token %}
+                <h3>{{form.username}}</h3>
+                <table>{{ form.vacancy.as_table }}</table>
+                <button type="submit">Submit Vacancy</button>
+            </form>
+        {% else %}
+        <h2>Resume</h2>
+            <form method="post" action="resume/new">
+            {% csrf_token %}
+                <h3>{{form.username}}</h3>
+                <table>{{ form.resume.as_table }}</table>
+                <button type="submit">Submit Resume</button>
+            </form>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
